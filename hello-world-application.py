@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import flask
  
 app = Flask(__name__)
  
@@ -7,4 +7,4 @@ def index():
     return 'This is a hello world application'
  
 # if __name__ == "__master__":
-app.run(host='0.0.0.0', debug=True, port=8080)
+    app.run(host='0.0.0.0', debug=True, port=8080)
