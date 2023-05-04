@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
     
 env:
-  APP_NAME: hello-world-py
+#   APP_NAME: hello-world-py
   APP_PORT: 8080
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
       id: build-image
       uses: redhat-actions/buildah-build@v2
       with:
-        image: ${{ env.APP_NAME }}
+        image: hello-world-py
         dockerfiles: |
           ./Dockerfile
       
