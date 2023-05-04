@@ -12,12 +12,13 @@ env:
 
 jobs:
 
-  build:
+  build-deploy:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+
+    # - uses: actions/checkout@v3
     - name: Build the Docker image
       id: build-image
       uses: redhat-actions/buildah-build@v2
@@ -40,6 +41,12 @@ jobs:
         image: ${{ steps.build-image.outputs.image }}
         registry: docker.io/avtarmarway/
         
+  run-aqua-trivvy-scan:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
