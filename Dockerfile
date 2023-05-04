@@ -5,8 +5,7 @@
 # EXPOSE 8080
 # CMD [ "python3" , "hello-world-application.py" ]
 
+COPY bash-script.sh
+RUN bash-script.sh
+SHELL [“/bin/bash”, “chmod u+x” "./bash-script.sh]
 #!/bin/bash
-FROM openjdk:11
-COPY hello-world-java.java
-EXPOSE 8080
-CMD ["java","-jar","/app.jar"]
