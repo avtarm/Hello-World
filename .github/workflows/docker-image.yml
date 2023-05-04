@@ -39,3 +39,13 @@ jobs:
       with:
         image: ${{ steps.build-image.outputs.image }}
         registry: docker.io/avtarmarway/
+        
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'docker.io/avtarmarway/${{ env.APP_NAME }}'
+        format: 'table'
+        exit-code: '1'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH'
