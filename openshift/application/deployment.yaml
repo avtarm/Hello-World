@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-application
+  namespace: hello-world
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: hello-world-application
+  template:
+    metadata:
+      labels:
+        app: hello-world-application
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: hello-world-application
+        image: avtarmarway/av-dso-poc-py:latest
+        ports: 
+        - name: app-port
+          containerPort: 8080
