@@ -5,6 +5,10 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+    
+env:
+  APP_NAME: av-dso-poc-py
+  APP_PORT: 8080
 
 jobs:
 
@@ -15,4 +19,23 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      id: build-image
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: ${{ env.APP_NAME }}
+        dockerfiles: |
+          ./Dockerfile
+      
+    - name: Log in to docker
+      uses: redhat-actions/podman-login@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        registry: docker.io
+
+    - name: Push To dockerhub
+      id: push-to-dockerhub
+      uses: redhat-actions/push-to-registry@v2
+      with:
+        image: ${{ steps.build-image.outputs.image }}
+        registry: docker.io/avtarmarway/
