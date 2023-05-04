@@ -80,7 +80,7 @@ jobs:
   deploy-image:
 
     runs-on: ubuntu-latest
-    needs: run-aqua-trivvy-scan
+    needs: run-aqua-chainbench
     steps:
 
     - name: Log in to docker
