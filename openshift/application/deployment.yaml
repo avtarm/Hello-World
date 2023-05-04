@@ -18,7 +18,7 @@ spec:
       serviceAccountName: default
       containers:
       - name: hello-world
-        image: avtarmarway/av-dso-poc-py:latest
+        image: avtarmarway/hello-world-py:latest
         ports: 
         - name: app-port
           containerPort: 8080
