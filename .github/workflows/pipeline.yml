@@ -79,6 +79,7 @@ jobs:
       with:
         image: avtarmarway/hello-world-py
         registry: docker.io
+        tag: latest
 
   run-aqua-trivvy-scan:
 
