@@ -94,5 +94,5 @@ jobs:
       id: push-to-dockerhub
       uses: redhat-actions/push-to-registry@v2
       with:
-        image: ${{ steps.build-image.outputs.image }}
+        image: ${{ jobs.build-image.steps.build-image.outputs.image }}
         registry: docker.io/avtarmarway/
