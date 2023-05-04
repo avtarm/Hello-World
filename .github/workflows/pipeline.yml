@@ -69,8 +69,8 @@ jobs:
       id: chain-bench
       uses: ./
       with:
-        repository-url: https://github.com/avtarm/Hello-World
-#         github-token: ${{secrets.GITHUB_TOKEN }}
+        repository-url: ${{ github.server_url }}/${{ github.repository }}
+        github-token: ${{secrets.GITHUB_TOKEN }}
 
     - name: Echo
       run: echo ${{ steps.chain-bench.outputs.chain-bench-result }}
