@@ -1,15 +1,15 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: hello-world-application
+  name: hello-world
   namespace: hello-world
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
-  host: hello-world-application.dso-poc-cluster-ecf58268eb10995f067698dffc82d2a7-0000.eu-gb.containers.appdomain.cloud
+  host: hello-world.dso-poc-cluster-ecf58268eb10995f067698dffc82d2a7-0000.eu-gb.containers.appdomain.cloud
   to:
     kind: Service
-    name: hello-world-application
+    name: hello-world
     weight: 100
   port:
     targetPort: http
