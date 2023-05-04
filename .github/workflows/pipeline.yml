@@ -75,10 +75,10 @@ jobs:
         registry: docker.io
     
     - name: Docker Push
-      uses: opspresso/action-docker@v0.4.0
+      uses: redhat-actions/push-to-registry@v2.7
       with:
-        image: hello-world-py
-        registry: docker.io/avtarmarway/
+        image: avtarmarway/hello-world-py
+        registry: docker.io
 
   run-aqua-trivvy-scan:
 
