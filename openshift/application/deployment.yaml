@@ -20,5 +20,4 @@ spec:
       - name: hello-world
         image: avtarmarway/av-dso-poc-py:latest
         ports: 
-        - name: app-port
-          containerPort: 8080
+        - containerPort: 8080
