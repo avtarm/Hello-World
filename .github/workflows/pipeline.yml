@@ -73,13 +73,23 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         registry: docker.io
-
+      
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+      with:
+        images: docker.io/avtarmarway/hello-world-py
+        
     - name: Push To dockerhub
       id: push-to-dockerhub
       uses: redhat-actions/push-to-registry@v2
       with:
         image: hello-world-py
         registry: docker.io/avtarmarway/
+        context: "{{defaultContext}}"
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}  
+        labels: ${{ steps.meta.outputs.labels }}
 
   run-aqua-trivvy-scan:
 
