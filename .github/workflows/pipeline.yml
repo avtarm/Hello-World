@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
     
 env:
-  APP_NAME: av-dso-poc
+  APP_NAME: av-dso-poc-py
   APP_PORT: 8080
 
 jobs:
