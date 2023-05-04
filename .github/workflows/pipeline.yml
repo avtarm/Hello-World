@@ -84,9 +84,9 @@ jobs:
       id: push-to-dockerhub
       uses: redhat-actions/push-to-registry@v2
       with:
-        image: hello-world-py
+        image: hello-world-py:latest
         registry: docker.io/avtarmarway/
-        context: "{{defaultContext}}"
+#         context: "{{defaultContext}}"
         push: true
         tags: ${{ steps.meta.outputs.tags }}  
         labels: ${{ steps.meta.outputs.labels }}
@@ -101,7 +101,7 @@ jobs:
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: 'docker.io/avtarmarway/hello-world-py'
+        image-ref: 'docker.io/avtarmarway/hello-world-py:latest'
         format: 'table'
         exit-code: '1'
         ignore-unfixed: true
